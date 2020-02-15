@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
-import SingleViewScreen from "../components/SingleViewScreen";
-import ImageListScreen from "./ImageListScreen";
+import SingleViewScreen from "./screens/SingleViewScreen";
+import ImageListScreen from "./screens/ImageListScreen";
 
 type RootStackParamList = {
-  Home: {images: strgin[]}
+  Home: {images: string[]}
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();

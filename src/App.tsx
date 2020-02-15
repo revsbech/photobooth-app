@@ -24,7 +24,7 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import RootNavigator from "./containers/RootNavigator";
+import RootNavigator from "./RootNavigator";
 
 const App: () => React$Node = () => {
   return (
