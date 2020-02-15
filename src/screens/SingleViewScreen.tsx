@@ -13,9 +13,8 @@ interface Props {
 class SingleViewScreen extends Component<Props> {
   public render() {
     const {image} = this.props.route.params;
-    console.log(image,"THEIMAGE");
     return (
-      <ScrollView>
+      <ScrollView style={{backgroundColor: "white"}}>
         <SafeAreaView>
           <View style={Styles.container}>
             <Image style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + image}} />
@@ -25,7 +24,7 @@ class SingleViewScreen extends Component<Props> {
     );
   }
 }
-const padding = 10;
+const padding = 0;
 const ratio = 4/3;
 
 const imageWidth =  Dimension.windowWidth -  2 * padding;

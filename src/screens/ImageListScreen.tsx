@@ -4,6 +4,7 @@ import {StackNavigationProp} from "@react-navigation/stack";
 import {connect} from 'react-redux';
 import {GlobalState} from "../redux/reducers";
 import {NAVIGATION_NAVIGATE} from "../redux/actions/navigation/navigation";
+import {FETCH_IMAGES_REQUEST} from "../redux/actions";
 
 interface Props {
   navigation: StackNavigationProp;
@@ -11,7 +12,8 @@ interface Props {
 
 const mapStateToProps = (state:GlobalState) => {
   return {
-    images: state.app.imageList
+    images: state.app.imageList,
+    isRefreshing: state.api.isLoading,
   };
 };
 
@@ -19,6 +21,9 @@ const mapDispatchToProps = (dispatch) =>{
   return {
     onClick: (image: string) => {
       dispatch(NAVIGATION_NAVIGATE.create({route: "SingleView", params: {image} }))
+    },
+    onRefresh: () => {
+      dispatch(FETCH_IMAGES_REQUEST.create())
     }
   }
 };

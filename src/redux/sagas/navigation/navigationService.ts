@@ -17,7 +17,6 @@ function navigate(route: string, params: any) {
   return false;
 }
 
-
 export default {
   navigate,
 };

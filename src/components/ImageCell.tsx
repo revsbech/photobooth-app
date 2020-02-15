@@ -17,11 +17,12 @@ class ImageCell extends Component<Props> {
   }
 }
 
-const padding = 10;
+const padding = 5;
 const cols = 2;
 const ratio = 4/3;
-
-const imageWidth =  Dimension.windowWidth / cols -  2 * padding;
+const borderWidth = 1;
+const margin = 25;
+const imageWidth =  Dimension.windowWidth / cols -  2 * padding - 2 * borderWidth - 2 * margin;
 
 const Styles = StyleSheet.create({
   image: {
@@ -30,8 +31,17 @@ const Styles = StyleSheet.create({
   },
   container: {
     backgroundColor: "white",
-    width: 100 / cols + "%",
+    //width: (100 / cols) + "%",
+    width: imageWidth + 2 * padding + 2 * borderWidth,
     padding: padding,
+    borderWidth: borderWidth,
+    borderColor: "#000000",
+    shadowColor: "#333333",
+    shadowOffset: { width: 15, height: 15 },
+    shadowOpacity: 0.22,
+    shadowRadius: 10,
+    elevation: 10,
+    margin: margin,
   }
 });
 
