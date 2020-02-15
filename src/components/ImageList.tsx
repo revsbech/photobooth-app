@@ -1,5 +1,4 @@
 import React, {Component} from 'react'
-import {Image, Text} from "react-native-elements";
 import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
 import ImageCell from "./ImageCell";
 

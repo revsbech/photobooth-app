@@ -1,25 +1,30 @@
 import React, {Component} from "react";
 import ImageList from "../components/ImageList"
 import {StackNavigationProp} from "@react-navigation/stack";
+import {connect} from 'react-redux';
+import {GlobalState} from "../redux/reducers";
+import {NAVIGATION_NAVIGATE} from "../redux/actions/navigation/navigation";
 
 interface Props {
-  navigation: StackNavigationProp
+  navigation: StackNavigationProp;
 }
 
-// Dummy class, should be rewritenn when redux ztate is introduced
-class ImageListScreen extends Component<Props> {
+const mapStateToProps = (state:GlobalState) => {
+  return {
+    images: state.app.imageList
+  };
+};
 
-  public onClick(image) {
-    this.props.navigation.navigate("SingleView", {image});
+const mapDispatchToProps = (dispatch) =>{
+  return {
+    onClick: (image: string) => {
+      dispatch(NAVIGATION_NAVIGATE.create({route: "SingleView", params: {image} }))
+    }
   }
+};
 
-  public render() {
-    //const dummyImages = ["processedImages/capture/2020/02/14/capture-114137.jpg","processedImages/capture/2020/02/14/capture-115554.jpg","processedImages/capture/2020/02/14/capture-115623.jpg","processedImages/capture/2020/02/14/capture-115647.jpg","processedImages/capture/2020/02/14/capture-115858.jpg","processedImages/capture/2020/02/14/capture-120005.jpg"];
-    const dummyImages = ["processedImages/capture/2020/02/13/capture-223011.jpg","processedImages/capture/2020/02/13/capture-225315.jpg","processedImages/capture/2020/02/13/capture-230435.jpg","processedImages/capture/2020/02/13/capture-230645.jpg"];
-    return (
-      <ImageList images={dummyImages} onClick={this.onClick.bind(this)}/>
-    )
-  }
-}
 
-export default ImageListScreen;
+export default connect(mapStateToProps, mapDispatchToProps)(ImageList);
+
+
+//export default ImageListScreen;

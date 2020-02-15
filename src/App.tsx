@@ -26,12 +26,43 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import RootNavigator from "./RootNavigator";
 
+import {createStore, applyMiddleware} from 'redux';
+import createSagaMiddleware from 'redux-saga';
+import rootSaga from './redux/sagas/';
+import reducer from './redux/reducers';
+import {Provider} from 'react-redux';
+import {navigationRef, isMountedRef} from "./redux/sagas/navigation/navigationService";
+
+const middlewares = [];
+
+// create the saga middleware
+const sagaMiddleware = createSagaMiddleware();
+middlewares.push(sagaMiddleware);
+
+if (__DEV__) {
+  // Logger with default options
+  const {logger} = require(`redux-logger`);
+  middlewares.push(logger)
+}
+const store = createStore(reducer, applyMiddleware(...middlewares));
+
+// then run the saga
+sagaMiddleware.run(rootSaga);
+
 const App: () => React$Node = () => {
+  React.useEffect(() => {
+    isMountedRef.current = true;
+
+    return () => isMountedRef.current = false;
+  }, [])
+
   return (
-    <NavigationContainer>
-      <StatusBar barStyle="dark-content" />
-        <RootNavigator />
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer ref={navigationRef}>
+        <StatusBar barStyle="dark-content" />
+          <RootNavigator />
+      </NavigationContainer>
+    </Provider>
   );
 };
 
