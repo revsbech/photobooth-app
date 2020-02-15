@@ -1,17 +1,21 @@
 import React, {Component} from 'react'
 import {Image, Text} from "react-native-elements";
-import {SafeAreaView, ScrollView, StyleSheet, View} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, View} from "react-native";
 import ImageCell from "./ImageCell";
 
 interface Props {
-  images: string[]
+  images: string[];
+  onClick: (string) => {};
 }
 
-class Home extends Component<Props> {
+class ImageList extends Component<Props> {
+
   public render() {
     const images = this.props.images.map((imageString) => {
       return (
-        <ImageCell key={imageString} image={imageString} />
+        <TouchableOpacity key={imageString} onPress={() => {this.props.onClick(imageString)}}>
+          <ImageCell  image={imageString} />
+        </TouchableOpacity>
       )
     });
 
@@ -38,4 +42,4 @@ const Styles = StyleSheet.create({
   }
 });
 
-export default Home;
+export default ImageList;

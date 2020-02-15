@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import {Image, Text} from "react-native-elements";
-import {StyleSheet, View} from "react-native";
+import {StyleSheet, TouchableOpacity, View} from "react-native";
+import {Dimension} from "../util/size";
 
 interface Props {
-  image: string
+  image: string;
 }
 
 class ImageCell extends Component<Props> {
@@ -14,18 +15,23 @@ class ImageCell extends Component<Props> {
       </View>
     );
   }
-
 }
+
+const padding = 10;
+const cols = 2;
+const ratio = 4/3;
+
+const imageWidth =  Dimension.windowWidth / cols -  2 * padding;
 
 const Styles = StyleSheet.create({
   image: {
-    width: "100%",
-    height: 300
+    width: imageWidth,
+    height: imageWidth / ratio
   },
   container: {
     backgroundColor: "white",
-    width: "50%",
-    padding: 10,
+    width: 100 / cols + "%",
+    padding: padding,
   }
 });
 
