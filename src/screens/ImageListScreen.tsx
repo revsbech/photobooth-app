@@ -14,6 +14,7 @@ const mapStateToProps = (state:GlobalState) => {
   return {
     images: state.app.imageList,
     isRefreshing: state.api.isLoading,
+    date: state.app.selectedDate,
   };
 };
 
@@ -28,8 +29,4 @@ const mapDispatchToProps = (dispatch) =>{
   }
 };
 
-
 export default connect(mapStateToProps, mapDispatchToProps)(ImageList);
-
-
-//export default ImageListScreen;

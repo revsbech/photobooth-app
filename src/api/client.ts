@@ -8,6 +8,7 @@ export default class PhotoboothApi {
   public async getImages(year: string, month: string, day: string): Promise<string[]> {
     try {
       const url = baseUrl + 'images/' + year + '/' + month + '/' + day + '/';
+      console.log(url, "URL");
       const result = await axios.get(url);
       return result.data;
     } catch (error) {

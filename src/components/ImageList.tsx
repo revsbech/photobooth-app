@@ -5,24 +5,25 @@ import {Text} from "react-native-elements";
 
 interface Props {
   images: string[];
-  onClick: (string) => {};
-  isRefreshing: false;
-  onRefresh: () => {};
+  onClick: (image: string) => void;
+  isRefreshing: boolean;
+  onRefresh: () => void;
+  date: Date;
 }
-
 
 class ImageList extends Component<Props> {
 
   public render() {
 
     if(this.props.images.length == 0) {
+      const dateString = this.props.date.getDate() + "/" + (this.props.date.getMonth() + 1) + "-" + this.props.date.getFullYear();
       return (
         <ScrollView style={{backgroundColor: "white"}}
                     refreshControl={<RefreshControl refreshing={this.props.isRefreshing} onRefresh={this.props.onRefresh} />}
                     contentContainerStyle={Styles.scrollInner}
         >
           <SafeAreaView style={Styles.noImagesContainer}>
-            <Text style={Styles.noImageText}>No images found for the given date. Pull to update, or choose another date.</Text>
+            <Text style={Styles.noImageText}>No images found {dateString}.{"\n"} Pull to update, or choose another date.</Text>
           </SafeAreaView>
         </ScrollView>
       )
@@ -38,7 +39,6 @@ class ImageList extends Component<Props> {
 
     return (
       <ScrollView style={{backgroundColor: "white"}}
-        contentContainerStyle={Styles.scrollView}
         refreshControl={<RefreshControl refreshing={this.props.isRefreshing} onRefresh={this.props.onRefresh} />}>
         <SafeAreaView style={Styles.container}>
             {images}

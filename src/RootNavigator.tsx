@@ -3,9 +3,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createStackNavigator } from '@react-navigation/stack';
 import SingleViewScreen from "./screens/SingleViewScreen";
 import ImageListScreen from "./screens/ImageListScreen";
+import SettingsScreen from "./screens/SettingsScreen";
 
 type RootStackParamList = {
   Home: {images: string[]}
+  Settings: null
 };
 
 const Tab = createBottomTabNavigator<RootStackParamList>();
@@ -29,6 +31,10 @@ class RootNavigator extends React.Component {
         <Tab.Screen
           name="Home"
           component={ImagesNavigator}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={SettingsScreen}
         />
       </Tab.Navigator>
     )

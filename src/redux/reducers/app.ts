@@ -1,13 +1,15 @@
-import {FETCH_IMAGES_SUCCESS} from "../actions";
+import {FETCH_IMAGES_SUCCESS, SET_DATE} from "../actions";
 
 export interface AppState {
   isInitialized: boolean;
   imageList: string[];
+  selectedDate: Date;
 }
 
 const initialState :AppState = {
   isInitialized: false,
   imageList: [],
+  selectedDate: new Date(),
 };
 
 export default function reducer(state = initialState, action: GenericAction): AppState {
@@ -18,6 +20,10 @@ export default function reducer(state = initialState, action: GenericAction): Ap
       return {...state, imageList: payload.images}
     }
 
+    case SET_DATE.type: {
+      const payload: Date = SET_DATE.payload(action)
+      return {...state, selectedDate: payload}
+    }
     default:
       return state;
   }
