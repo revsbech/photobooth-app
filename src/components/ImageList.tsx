@@ -23,7 +23,7 @@ class ImageList extends Component<Props> {
                     contentContainerStyle={Styles.scrollInner}
         >
           <SafeAreaView style={Styles.noImagesContainer}>
-            <Text style={Styles.noImageText}>No images found {dateString}.{"\n"} Pull to update, or choose another date.</Text>
+            <Text style={Styles.noImageText}>No photobooth images found taken on {dateString}.{"\n"} Pull to update, or choose another date.</Text>
           </SafeAreaView>
         </ScrollView>
       )
@@ -69,6 +69,7 @@ const Styles = StyleSheet.create({
   },
   noImageText: {
     fontSize: 23,
+    textAlign: "center",
   }
 });
 

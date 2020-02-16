@@ -32,6 +32,7 @@ import rootSaga from './redux/sagas/';
 import reducer from './redux/reducers';
 import {Provider} from 'react-redux';
 import {navigationRef, isMountedRef} from "./redux/sagas/navigation/navigationService";
+import SplashScreen from 'react-native-splash-screen';
 
 const middlewares = [];
 
@@ -49,6 +50,9 @@ const store = createStore(reducer, applyMiddleware(...middlewares));
 // then run the saga
 sagaMiddleware.run(rootSaga);
 
+// Do stuff and hide the splash when you want
+
+
 const App: () => React$Node = () => {
   React.useEffect(() => {
     isMountedRef.current = true;
@@ -56,6 +60,7 @@ const App: () => React$Node = () => {
     return () => isMountedRef.current = false;
   }, [])
 
+  SplashScreen.hide();
   return (
     <Provider store={store}>
       <NavigationContainer ref={navigationRef}>

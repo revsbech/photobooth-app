@@ -44,12 +44,3 @@ target 'PhotoBooth' do
   use_native_modules!
 end
 
-target 'PhotoBooth-tvOS' do
-  # Pods for PhotoBooth-tvOS
-
-  target 'PhotoBooth-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-
-end

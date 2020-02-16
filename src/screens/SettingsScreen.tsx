@@ -8,7 +8,6 @@ import {connect} from "react-redux";
 import ImageList from "../components/ImageList";
 import {FETCH_IMAGES_REQUEST, NAVIGATION_NAVIGATE, SET_DATE} from "../redux/actions";
 
-
 interface Props {
   date: Date;
   onSetDate: (date: Date) => void
@@ -32,8 +31,13 @@ class SettingsScreen extends Component<Props, State> {
   public onDateChange(event, date) {
     this.setState({selectedDate: date})
   }
+  public setToday() {
+    const now = new Date();
+    this.setState({showDataPicker: false, selectedDate: now})
+    this.props.onSetDate(now);
+  }
+
   public onSetDate() {
-    console.log(this.state.selectedDate, "Setting data");
     this.props.onSetDate(this.state.selectedDate);
     this.setState({showDataPicker: false})
   }
@@ -65,7 +69,8 @@ class SettingsScreen extends Component<Props, State> {
                 mode={"date"}
                 onChange={this.onDateChange.bind(this)}
               />
-              <Button onPress={this.onSetDate.bind(this)} type="outline" title="Set date"/>
+              <Button onPress={this.onSetDate.bind(this)}  title="Set date" style={{marginBottom: 25}}/>
+              <Button onPress={this.setToday.bind(this)} type="outline" title="Set today"/>
               </>
           </Overlay>
         </View>
