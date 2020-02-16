@@ -61,8 +61,8 @@ class SettingsScreen extends Component<Props, State> {
             onPress={() => {this.setState({showDataPicker: true})}}
           />
 
-          <Overlay isVisible={this.state.showDataPicker}>
-            <>
+          <Overlay overlayBackgroundColor={"#656565"} isVisible={this.state.showDataPicker}>
+            <View style={Styles.overlay}>
               <DateTimePicker
                 testID="dateTimePicker"
                 value={this.state.selectedDate}
@@ -71,7 +71,7 @@ class SettingsScreen extends Component<Props, State> {
               />
               <Button onPress={this.onSetDate.bind(this)}  title="Set date" style={{marginBottom: 25}}/>
               <Button onPress={this.setToday.bind(this)} type="outline" title="Set today"/>
-              </>
+            </View>
           </Overlay>
         </View>
       </>
@@ -82,6 +82,10 @@ class SettingsScreen extends Component<Props, State> {
 const Styles = StyleSheet.create({
   list: {
     marginTop: 50,
+  },
+  overlay: {
+
+    padding: 25,
   }
 });
 
