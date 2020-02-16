@@ -1,7 +1,8 @@
 import { ActionCreator } from 'dense-redux-actions';
+import {Image} from "../../../entities/Image";
 
 interface Images {
-  images: string[];
+  images: Image[];
 }
 
 interface ApiFail {

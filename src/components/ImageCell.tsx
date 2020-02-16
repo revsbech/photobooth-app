@@ -1,17 +1,20 @@
 import React, {Component} from 'react'
-import {Image, Text} from "react-native-elements";
+import {Image as Img, Text} from "react-native-elements";
 import {StyleSheet, TouchableOpacity, View} from "react-native";
 import {Dimension} from "../util/size";
+import {Image} from "../entities/Image";
+import Moment from "react-moment";
 
 interface Props {
-  image: string;
+  image: Image;
 }
 
 class ImageCell extends Component<Props> {
   public render() {
     return (
       <View style={Styles.container}>
-        <Image style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + this.props.image}} />
+        <Img style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + this.props.image.image}} />
+        <Text>Date: {this.props.image.date}</Text>
       </View>
     );
   }

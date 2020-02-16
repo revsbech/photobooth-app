@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity, RefreshControl, View} from "react-native";
 import ImageCell from "./ImageCell";
 import {Text} from "react-native-elements";
+import {Image} from "../entities/Image";
 
 interface Props {
-  images: string[];
-  onClick: (image: string) => void;
+  images: Image[];
+  onClick: (image: Image) => void;
   isRefreshing: boolean;
   onRefresh: () => void;
   date: Date;
@@ -29,10 +30,10 @@ class ImageList extends Component<Props> {
       )
     }
 
-    const images = this.props.images.map((imageString) => {
+    const images = this.props.images.map((image: Image) => {
       return (
-        <TouchableOpacity key={imageString} onPress={() => {this.props.onClick(imageString)}}>
-          <ImageCell  image={imageString} />
+        <TouchableOpacity key={image.image} onPress={() => {this.props.onClick(image)}}>
+          <ImageCell  image={image} />
         </TouchableOpacity>
       )
     });

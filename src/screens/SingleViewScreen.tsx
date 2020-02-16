@@ -1,23 +1,26 @@
 import React, {Component} from 'react'
-import {Image, Text} from "react-native-elements";
+import {Image as Img, Text} from "react-native-elements";
 import {SafeAreaView, ScrollView, StyleSheet, View} from "react-native";
 import {StackNavigationProp} from "@react-navigation/stack";
 import {Dimension} from "../util/size";
 
 interface Props {
   navigation: StackNavigationProp;
-  image: string;
   route: any;
 }
 
 class SingleViewScreen extends Component<Props> {
   public render() {
-    const {image} = this.props.route.params;
+    const { image } = this.props.route.params;
     return (
       <ScrollView style={{backgroundColor: "white"}}>
         <SafeAreaView>
           <View style={Styles.container}>
-            <Image style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + image}} />
+            <Img style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + image.image}} />
+            <View style={Styles.detailsContainer}>
+              <Text>Date: {image.date}</Text>
+            </View>
+
           </View>
         </SafeAreaView>
       </ScrollView>
@@ -37,7 +40,9 @@ const Styles = StyleSheet.create({
     width: imageWidth,
     height: imageWidth / ratio
   },
-
+  detailsContainer: {
+    padding: 25,
+  }
 });
 
 export default SingleViewScreen;

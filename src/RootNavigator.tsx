@@ -4,9 +4,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 import SingleViewScreen from "./screens/SingleViewScreen";
 import ImageListScreen from "./screens/ImageListScreen";
 import SettingsScreen from "./screens/SettingsScreen";
+import {Image} from "./entities/Image";
 
 type RootStackParamList = {
-  Home: {images: string[]}
+  Home: {images: Image[]}
   Settings: null
 };
 

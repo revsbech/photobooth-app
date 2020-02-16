@@ -1,8 +1,9 @@
 import {FETCH_IMAGES_SUCCESS, SET_DATE} from "../actions";
+import {Image} from "../../entities/Image";
 
 export interface AppState {
   isInitialized: boolean;
-  imageList: string[];
+  imageList: Image[];
   selectedDate: Date;
 }
 
@@ -17,12 +18,12 @@ export default function reducer(state = initialState, action: GenericAction): Ap
   switch (action.type) {
     case FETCH_IMAGES_SUCCESS.type: {
       const payload = FETCH_IMAGES_SUCCESS.payload(action);
-      return {...state, imageList: payload.images}
+      return {...state, imageList: payload.images};
     }
 
     case SET_DATE.type: {
-      const payload: Date = SET_DATE.payload(action)
-      return {...state, selectedDate: payload}
+      const payload: Date = SET_DATE.payload(action);
+      return {...state, selectedDate: payload};
     }
     default:
       return state;
