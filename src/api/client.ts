@@ -19,4 +19,16 @@ export default class PhotoboothApi {
     }
   }
 
+  public async sendSms(image: string, phoneNumber: string): Promise<boolean> {
+    try {
+      const url = baseUrl + 'send_image?path=' + encodeURIComponent(image) + '&phoneNumber=' + encodeURIComponent(phoneNumber) ;
+      console.log(url, "URL for sending sms");
+      const result = await axios.get(url);
+      return result.data;
+    } catch (error) {
+      console.log(error, "ERROR");
+      return [];
+    }
+  }
+
 }

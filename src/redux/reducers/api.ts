@@ -1,4 +1,10 @@
-import {FETCH_IMAGES_FAIL, FETCH_IMAGES_REQUEST, FETCH_IMAGES_SUCCESS} from "../actions";
+import {
+  FETCH_IMAGES_FAIL,
+  FETCH_IMAGES_REQUEST,
+  FETCH_IMAGES_SUCCESS, SENDSMS_FAIL,
+  SENDSMS_REQUEST,
+  SENDSMS_SUCCESS,
+} from '../actions';
 
 export interface ApiState {
   isLoading: boolean;
@@ -19,6 +25,18 @@ export default function reducer(state = initialState, action: GenericAction): Ap
     }
 
     case FETCH_IMAGES_FAIL.type: {
+      return {...state, isLoading: false}
+    }
+
+    case SENDSMS_REQUEST.type: {
+      return {...state, isLoading: true}
+    }
+
+    case SENDSMS_SUCCESS.type: {
+      return {...state, isLoading: false}
+    }
+
+    case SENDSMS_FAIL.type: {
       return {...state, isLoading: false}
     }
 

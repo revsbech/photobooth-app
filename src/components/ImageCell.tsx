@@ -14,7 +14,7 @@ class ImageCell extends Component<Props> {
     return (
       <View style={Styles.container}>
         <Img style={Styles.image} source={{uri: "https://d3mldn0gkzqaiy.cloudfront.net/" + this.props.image.image}} />
-        <Text>Date: {this.props.image.date}</Text>
+        <Text><Moment format="D MMM YYYY HH:mm" element={Text}>{this.props.image.date}</Moment></Text>
       </View>
     );
   }

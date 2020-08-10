@@ -1,6 +1,12 @@
 import {put, takeLatest, select} from "redux-saga/effects";
 import {GenericAction} from "dense-redux-actions";
-import {FETCH_IMAGES_FAIL, FETCH_IMAGES_REQUEST, FETCH_IMAGES_SUCCESS} from "../../actions";
+import {
+  FETCH_IMAGES_FAIL,
+  FETCH_IMAGES_REQUEST,
+  FETCH_IMAGES_SUCCESS,
+  SENDSMS_FAIL, SENDSMS_REQUEST,
+  SENDSMS_SUCCESS, TOGGLE_SMS_MODAL,
+} from '../../actions';
 import PhotoboothApi from "../../../api/client";
 import {GlobalState} from "../../reducers";
 import {Image} from "../../../entities/Image";
@@ -37,6 +43,19 @@ export function* fetchImages(action: GenericAction) {
   }
 }
 
+export function* sendSms(action: GenericAction) {
+  try {
+    const payload = SENDSMS_REQUEST.payload(action);
+    const success = client.sendSms(payload.path, payload.phoneNumber);
+    yield put(SENDSMS_SUCCESS.create({}));
+    // Close the modal when done (really a bit nasty that the API saga controls APP specific stuff, but hey, I had to do it fast
+    yield put(TOGGLE_SMS_MODAL.create(false));
+  } catch (e) {
+    yield put(SENDSMS_FAIL.create({message: e.message}));
+  }
+}
+
 export function* apiSaga() {
   yield takeLatest(FETCH_IMAGES_REQUEST.type, fetchImages);
+  yield takeLatest(SENDSMS_REQUEST.type, sendSms);
 }
