@@ -12,7 +12,7 @@ const initialState :AppState = {
   isInitialized: false,
   imageList: [],
   selectedDate: new Date(),
-  smsModalOpen: true,
+  smsModalOpen: false,
 };
 
 export default function reducer(state = initialState, action: GenericAction): AppState {

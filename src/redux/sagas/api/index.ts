@@ -1,5 +1,7 @@
 import {put, takeLatest, select} from "redux-saga/effects";
 import {GenericAction} from "dense-redux-actions";
+import { Alert } from "react-native";
+
 import {
   FETCH_IMAGES_FAIL,
   FETCH_IMAGES_REQUEST,
@@ -48,8 +50,10 @@ export function* sendSms(action: GenericAction) {
     const payload = SENDSMS_REQUEST.payload(action);
     const success = client.sendSms(payload.path, payload.phoneNumber);
     yield put(SENDSMS_SUCCESS.create({}));
+    Alert.alert('SMS Afsendt', 'Der er afsendt en sms med link til billedet. Der kan gå op til et minut før du modtager den.');
     // Close the modal when done (really a bit nasty that the API saga controls APP specific stuff, but hey, I had to do it fast
     yield put(TOGGLE_SMS_MODAL.create(false));
+
   } catch (e) {
     yield put(SENDSMS_FAIL.create({message: e.message}));
   }

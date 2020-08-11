@@ -90,26 +90,21 @@ class SingleViewScreen extends Component<Props, State> {
             Indtast telefonnummer, så modtager du et link til billedet.
           </Text>
 
-          {!this.props.loading ?
-            <>
-              <PhoneInput
-                keyboardType={'numeric'}
-                ref={(ref: any) => {
-                  this.phone = ref;
-                }}
-                onChangePhoneNumber={this.changePhoneNumber.bind(this)}
-                initialCountry={'dk'}
-                textStyle={Styles.phoneTextStyle}
-                style={Styles.phoneStyle}
-                flagStyle={Styles.flagStyle}
-                value={this.state.currentPhoneNumber}
-              />
-              <Button style={Styles.button} disabled={!this.state.isValid} title={'Send SMS'} onPress={this.sendSms.bind(this)} />
-              <Button style={Styles.button} title={'Close'} onPress={this.closeModal.bind(this)} />
-              </>
-            :
-            <ActivityIndicator style={{margin: 80}} size={"large"} />
-          }
+            <PhoneInput
+              keyboardType={'numeric'}
+              ref={(ref: any) => {
+                this.phone = ref;
+              }}
+              onChangePhoneNumber={this.changePhoneNumber.bind(this)}
+              initialCountry={'dk'}
+              textStyle={Styles.phoneTextStyle}
+              style={Styles.phoneStyle}
+              flagStyle={Styles.flagStyle}
+              value={this.state.currentPhoneNumber}
+            />
+          <Button style={Styles.button} loading={this.props.loading} disabled={!this.state.isValid} title={'Send SMS'} onPress={this.sendSms.bind(this)} />
+          <Button style={Styles.button} type="outline"
+                   title={'Luk'} onPress={this.closeModal.bind(this)} />
 
         </Modal>
       </ScrollView>
@@ -147,6 +142,7 @@ const Styles = StyleSheet.create({
     //backgroundColor: '',
     fontSize: 80,
     height: 80,
+    color: 'black'
   },
   flagStyle: {
     height: 80,
