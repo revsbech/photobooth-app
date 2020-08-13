@@ -184,6 +184,9 @@ PODS:
   - React-jsinspector (0.61.5)
   - react-native-safe-area-context (0.7.3):
     - React
+  - react-native-simple-toast (1.1.2):
+    - React
+    - Toast (~> 4.0.0)
   - react-native-splash-screen (3.2.0):
     - React
   - React-RCTActionSheet (0.61.5):
@@ -233,6 +236,7 @@ PODS:
     - React
   - RNVectorIcons (6.6.0):
     - React
+  - Toast (4.0.0)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
@@ -253,6 +257,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-simple-toast (from `../node_modules/react-native-simple-toast`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -276,6 +281,7 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - boost-for-react-native
+    - Toast
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -308,6 +314,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-simple-toast:
+    :path: "../node_modules/react-native-simple-toast"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   React-RCTActionSheet:
@@ -362,6 +370,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: d5525f9ed5f782fdbacb64b9b01a43a9323d2386
   React-jsinspector: fa0ecc501688c3c4c34f28834a76302233e29dc0
   react-native-safe-area-context: e200d4433aba6b7e60b52da5f37af11f7a0b0392
+  react-native-simple-toast: 58b71ef003f01d2c0bf5dcd2fdccc75861dabade
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
   React-RCTActionSheet: 600b4d10e3aea0913b5a92256d2719c0cdd26d76
   React-RCTAnimation: 791a87558389c80908ed06cc5dfc5e7920dfa360
@@ -379,6 +388,7 @@ SPEC CHECKSUMS:
   RNReanimated: 89f5e0a04d1dd52fbf27e7e7030d8f80a646a3fc
   RNScreens: 5e4758109c6d35f9a009ce72af873df907548020
   RNVectorIcons: 0bb4def82230be1333ddaeee9fcba45f0b288ed4
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
   Yoga: f2a7cd4280bfe2cca5a7aed98ba0eb3d1310f18b
 
 PODFILE CHECKSUM: b6c6cd206ccf971fe05c0aaff91642e1f4a25660

@@ -1,4 +1,4 @@
-import {FETCH_IMAGES_SUCCESS, SET_DATE, TOGGLE_SMS_MODAL} from "../actions";
+import { FETCH_IMAGES_SUCCESS, SENDSMS_SUCCESS, SET_DATE, TOGGLE_SMS_MODAL } from '../actions';
 import {Image} from "../../entities/Image";
 
 export interface AppState {
@@ -6,6 +6,7 @@ export interface AppState {
   imageList: Image[];
   selectedDate: Date;
   smsModalOpen: boolean;
+  smsModalShowSuccess: boolean
 }
 
 const initialState :AppState = {
@@ -13,6 +14,7 @@ const initialState :AppState = {
   imageList: [],
   selectedDate: new Date(),
   smsModalOpen: false,
+  smsModalShowSuccess: false,
 };
 
 export default function reducer(state = initialState, action: GenericAction): AppState {
@@ -24,7 +26,11 @@ export default function reducer(state = initialState, action: GenericAction): Ap
     }
     case TOGGLE_SMS_MODAL.type: {
       const payload = TOGGLE_SMS_MODAL.payload(action)
-      return {...state, smsModalOpen: payload}
+      return {
+        ...state,
+        smsModalOpen: payload,
+        smsModalShowSuccess: false,
+      }
     }
     case SET_DATE.type: {
       const payload: Date = SET_DATE.payload(action);
