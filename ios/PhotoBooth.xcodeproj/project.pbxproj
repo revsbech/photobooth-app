@@ -496,7 +496,7 @@
 			baseConfigurationReference = C14C51C9FF3037084445BB7F /* Pods-PhotoBooth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
@@ -511,7 +511,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = dk.pco.prototype.photobooth;
 				PRODUCT_NAME = PhotoBooth;
-				PROVISIONING_PROFILE_SPECIFIER = Photobooth;
+				PROVISIONING_PROFILE_SPECIFIER = "PCO Development profile";
 				TARGETED_DEVICE_FAMILY = 2;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

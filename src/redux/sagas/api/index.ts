@@ -26,7 +26,7 @@ export function* fetchImages(action: GenericAction) {
   try {
     const date = yield select((state: GlobalState) => state.app.selectedDate);
 
-    const images:Image[] = yield client.getImages(
+    let images:Image[] = yield client.getImages(
       date.getFullYear(),
       appendLeadingZeroes(date.getMonth() + 1),
       appendLeadingZeroes(date.getDate())
@@ -36,7 +36,10 @@ export function* fetchImages(action: GenericAction) {
       // This might be very ineffecient, since we convert to dates on each compare. Maybe we should convert them to Date in the client
       const aDate = new Date(a.date);
       const bDate = new Date(b.date);
-      return (aDate < bDate);
+      if (aDate == bDate) {
+        return 0;
+      }
+      return (aDate < bDate ? 1 : -1);
     });
 
     yield put(FETCH_IMAGES_SUCCESS.create({images}));
